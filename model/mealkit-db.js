@@ -18,7 +18,7 @@ let mealkitsDataBase = [
         price: 15.99,
         cookingTime: 30, 
         servings: 4,
-        imageUrl: "/image/food/topmeal1.PNG", 
+        imageUrl: "/image/food/topmeal1.jpg", 
         customerRating: "😼😼😼😼😼",
         topMeal: true
     }, 
@@ -30,7 +30,7 @@ let mealkitsDataBase = [
         price: 3.99,
         cookingTime: 10, 
         servings: 3,
-        imageUrl: "/image/food/topmeal2.PNG", 
+        imageUrl: "/image/food/topmeal2.jpg", 
         customerRating: "😼😼😼😼",
         topMeal: true
     },
@@ -42,7 +42,7 @@ let mealkitsDataBase = [
         price: 15.99,
         cookingTime: 20, 
         servings: 4,
-        imageUrl: "/image/food/topmeal3.PNG", 
+        imageUrl: "/image/food/topmeal3.jpg", 
         customerRating: "😼😼😼😼😼",
         topMeal: true
     },{
@@ -75,7 +75,7 @@ let mealkitsDataBase = [
         price: 10.99,
         cookingTime: 20, 
         servings: 2,
-        imageUrl: "/image/food/TaiwaneseFriedChicken.PNG", 
+        imageUrl: "/image/food/TaiwaneseFriedChicken.jpg", 
         customerRating: "😼😼😼😼😼",
         topMeal: false
     }
