@@ -1,0 +1,23 @@
+{{#if menuCard}}
+<div class = "col-md-6" style= "background-color:white" >
+    <hr>
+{{/if}}
+{{#unless menuCard}}
+<div class = "col-xl-4 text-light" style= "background-color:black" >
+    <hr>
+{{/unless}}
+    <h3 class = "text-center">{{card.title}}<h3>
+    <!--image height is not fixed, so we need to fix the height-->   
+    <img src="{{card.imageUrl}}" class="img-fluid " style= "object-fit:cover  ;width:100%; height:500px" alt="food image">
+{{#if menuCard}}
+    <p class = "text-center h5">Ingredients: {{card.include}}<p>
+    <p class = "text-center h5">Cooking Time: {{card.cookingTime}} mins</p>
+{{/if}}
+    <p class = "text-center h5">Serving: {{card.servings}} people<p>        
+    <p class = "text-center h5">Food Description: {{card.description}}<p>
+    <p class = "text-center h5">Customer Rating: {{card.customerRating}}<p>
+    <p class = "text-center h5">Price: ${{card.price}}<p>
+</div>
+
+
+

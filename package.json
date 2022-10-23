@@ -1,0 +1,24 @@
+{
+  "name": "web322-byu39",
+  "version": "1.0.0",
+  "description": "web322-assignment3",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fishball23333/web322-byu39.git"
+  },
+  "author": "binwei yu",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.1",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6"
+  },
+  "bugs": {
+    "url": "https://github.com/fishball23333/web322-byu39/issues"
+  },
+  "homepage": "https://github.com/fishball23333/web322-byu39#readme"
+}
