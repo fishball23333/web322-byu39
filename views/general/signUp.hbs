@@ -1,5 +1,5 @@
 
-<form class = "container-md" action="/action_page.php">
+<form class = "container-md" action="/signUp" method="post">
   <div class = "col-md-8 container-md signIn my-5" >
     <!-- mb3: margin bottom size 3, mt3: margin top size 3 -->
 
@@ -8,23 +8,36 @@
 
   <div class="mb-3 mx-5"> 
     <label for="firstName" class="form-label">First Name:</label>
-    <input type="firstName" class="form-control " id="firstName" placeholder="Enter First Name" name="firstName">
+    <input type="text" class="form-control " id="firstName" placeholder="Enter First Name" name="firstName" value = {{values.firstName}}>
+      {{#if validationMessages.firstName}}
+        <p style="color: red;">{{validationMessages.firstName}}</p>
+      {{/if}}
   </div>
 
+
   <div class="mb-3 mx-5"> 
-    <label for="lastName" class="form-label">First Name:</label>
-    <input type="lastName" class="form-control " id="firstName" placeholder="Enter Last Name" name="lastName">
+    <label for="lastName" class="form-label">Last Name:</label>
+    <input type="text" class="form-control " id="lastName" placeholder="Enter Last Name" name="lastName" value = {{values.lastName}}>
+      {{#if validationMessages.lastName}}
+        <p style="color: red;">{{validationMessages.lastName}}</p>
+      {{/if}}
   </div>
 
 
   <div class="mb-3 mx-5">
     <label for="email" class="form-label">Email:</label>
-    <input type="email" class="form-control" id="email" placeholder="Enter Your Email Address" name="email">
+    <input type="text" class="form-control" id="email" placeholder="Enter Your Email Address" name="email" value = {{values.email}}>
+      {{#if validationMessages.email}}
+        <p style="color: red;">{{validationMessages.email}}</p>
+      {{/if}}
   </div>
 
   <div class="mb-5 mx-5">
     <label for="pwd" class="form-label">Password:</label>
-    <input type="password" class="form-control" id="pwd" placeholder="Enter Password" name="pswd">
+    <input type="password" class="form-control" id="pwd" placeholder="Enter Password" name="pswd" value = {{values.pswd}}>
+      {{#if validationMessages.pswd}}
+        <p style="color: red;">{{validationMessages.pswd}}</p>
+      {{/if}}
   </div>
 
 

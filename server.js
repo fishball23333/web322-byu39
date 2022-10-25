@@ -15,13 +15,18 @@ const express = require("express");
 const exphbs  = require('express-handlebars')
 const app = express();
 const mealkits = require("./model/mealkit-db")
-
+// Set up dotenv
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config/keys.env" });
 //setting handlebar engine
 app.engine(".hbs", exphbs.engine({
     extname:".hbs",
     defaultLayout:"main"
 }))
 app.set("view engine", ".hbs")
+
+//Set up body-parser
+app.use(express.urlencoded({extended:false}))
 
 //setting static folder
 app.use(express.static(path.join(__dirname, "/assets")))
@@ -32,19 +37,10 @@ const generalController = require("./controllers/general")
 app.use("/", generalController)
 
 
-
-// app.get("/",(req, res)=>{
-//     res.sendFile(path.join (__dirname, "/views/index.html"))
-// })
 app.get("/FAQ", (req, res)=>{
     res.sendFile(path.join(__dirname, "/views/FAQ.html"))
 })
-// app.get("/login", (req, res)=>{
-//     res.sendFile(path.join(__dirname, "/views/login.html"))
-// })
-// app.get("/registration", (req, res)=>{
-//     res.sendFile(path.join(__dirname, "/views/registration.html"))
-// })
+
 app.get("/pricing", (req, res)=>{
     res.sendFile(path.join(__dirname, "/views/pricing.html"))
 })
