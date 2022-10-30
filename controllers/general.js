@@ -58,6 +58,7 @@ router.post("/signUp", (req, res)=>{
                 `Visitor's Full Name: ${firstName} ${lastName}<br>
                 Visitor's Email Address: ${email}<br>
                 Student Name: Binwei Yu<br>
+                Student email address: byu39@myseneca.ca<br>
                 Website Name: web322-project-AsianExpress<br>
                 `,
             text:"this is a text message"
