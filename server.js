@@ -37,24 +37,6 @@ const generalController = require("./controllers/general")
 app.use("/", generalController)
 
 
-app.get("/FAQ", (req, res)=>{
-    res.sendFile(path.join(__dirname, "/views/FAQ.html"))
-})
-
-app.get("/pricing", (req, res)=>{
-    res.sendFile(path.join(__dirname, "/views/pricing.html"))
-})
-app.get("/menu", (req, res)=>{
-    res.sendFile(path.join(__dirname, "/views/menu.html"))
-})
-app.get("/headers", (req, res)=>{
-    const headers = req.headers
-    //send is sending a string
-    //json is sending in a json data, which will format properly
-    res.json(headers)
-})
-
-
 // *** DO NOT MODIFY THE LINES BELOW ***
 
 // This use() will not allow requests to go beyond it
