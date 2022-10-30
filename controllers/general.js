@@ -49,9 +49,10 @@ router.post("/signUp", (req, res)=>{
         const sgMail = require("@sendgrid/mail");
         sgMail.setApiKey(process.env.SENDGRID_API_KEY);
         console.log(email)
+        //Note: my seneca email cannot sent to gmail without DNS authentication, so I choose gmail address as a sender
         const msg = {
             to: `${email}`, 
-            from: "byu39@myseneca.ca",
+            from: "markyu132@gmail.com",
             subject: "WEB322-WebProject-From-BinweiYu",
             html:
                 `Visitor's Full Name: ${firstName} ${lastName}<br>
