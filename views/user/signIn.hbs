@@ -1,0 +1,44 @@
+<form class = "container-md" action="/user/login", method="post">
+  <div class = "col-md-8 container-md signIn my-5" >
+    <h1 class="text-center fw-bolder">Welcome Back</h1>
+
+    <div class="mb-3 mx-5"> 
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" class="form-control " id="email" placeholder="Enter email" name="email" value = {{values.email}}>
+        {{#if validationMessages.email}}
+          <p style="color: red;">{{validationMessages.email}}</p>
+        {{/if}}
+    </div>
+
+
+    <div class="mb-3 mx-5">
+      <label for="pwd" class="form-label">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" value = {{values.pswd}}>
+        {{#if validationMessages.pswd}}
+          <p style="color: red;">{{validationMessages.pswd}}</p>
+        {{/if}}
+    </div>
+    {{!-- radio buttons --}}
+    <div class= "mb-3 mx-5"> Select which role you want to sign in: 
+      <div class="form-check">
+          <label class="form-check-label" for="clerk_id">Data Entry Clerk</label>
+          <input class="form-check-input" type="radio" name="role" id="clerk_id", value = "clerk_id">
+      </div>
+      <div class="form-check">
+        <label class="form-check-label" for="customer">Customer</label>
+        <input class="form-check-input" type="radio" name="role" id="customer_id", value = "customer">
+      </div>
+      {{#if validationMessages.role}}
+      <p style="color: red;">{{validationMessages.role}}</p>
+      {{/if}}
+      {{#if validationMessages.serverError}}
+      <p style = "color: red">{{validationMessages.serverError}}</p>
+      {{/if}}
+    </div>
+
+    <div class="d-grid">
+      <button type="submit" class="btn btn-warning mb-5 mx-5">Log In</button>
+    </div>
+
+  </div>
+</form>

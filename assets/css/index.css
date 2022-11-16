@@ -28,7 +28,7 @@ body {
     font-family: fantasy;
 }
 
-ul {
+/* ul {
     display: inline-block;
     padding: 0;
     margin: 0;
@@ -43,15 +43,26 @@ li {
     margin-top: 20px;
     border: 0px;
     font-size: 150%;
-}
+} */
 
-#signIn{
+#logOut{
     background-color:rgb(250, 212, 0);
     border-radius: 10px;
     height: 100%;
     cursor: pointer
 }
-#signIn:hover{
+#logOut:hover{
+    font-size: larger;
+}
+
+#signIn {
+    background-color: rgb(250, 212, 0);
+    border-radius: 10px;
+    height: 100%;
+    cursor: pointer
+}
+
+#signIn:hover {
     font-size: larger;
 }
 
@@ -156,9 +167,9 @@ li {
     text-shadow: 4px 4px red;
 }
 
-a{
+/* a{
     color: white;
-}
+} */
 
 
 form{

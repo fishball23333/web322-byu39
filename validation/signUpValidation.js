@@ -1,5 +1,6 @@
 
-function SignUpValidation (firstName, lastName,email,  pswd){
+function SignUpValidation (firstName, lastName,email,  pswd, role){
+    console.log("role is ", role)
     let passedValidation = true
     let validationMessages = {}
     //firstName validation
@@ -21,13 +22,10 @@ function SignUpValidation (firstName, lastName,email,  pswd){
     }
 
     //email validation 
-    if (typeof email !== "string" || email.trim().length==0){
+    if (email.trim().length===0){
         passedValidation = false
         validationMessages.email = "you must specify an email address"
-    } else if (!/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/.test(email)){
-        passedValidation = false
-        validationMessages.email = "your email should match 'xxxxx@xxxx.xxx' format"
-        }
+    }
 
     //password validation
     if (typeof pswd !== "string" || pswd.trim().length==0){
@@ -48,6 +46,12 @@ function SignUpValidation (firstName, lastName,email,  pswd){
     } else if (!/.*\W.*/.test(pswd)){
         passedValidation = false
         validationMessages.pswd = "your password should have at least 1 symbol"
+    }
+
+    //role validation
+    if (!role){
+        passedValidation = false
+        validationMessages.role = "you must specify a role"
     }
     return {passedValidation, validationMessages}
 }

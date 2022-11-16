@@ -1,5 +1,5 @@
 
-<form class = "container-md" action="/signUp" method="post">
+<form class = "container-md" action="/user/signUp" method="post">
   <div class = "col-md-8 container-md signIn my-5" >
     <!-- mb3: margin bottom size 3, mt3: margin top size 3 -->
 
@@ -26,13 +26,13 @@
 
   <div class="mb-3 mx-5">
     <label for="email" class="form-label">Email:</label>
-    <input type="text" class="form-control" id="email" placeholder="Enter Your Email Address" name="email" value = {{values.email}}>
+    <input type="email" class="form-control" id="email" placeholder="Enter Your Email Address" name="email" value = {{values.email}}>
       {{#if validationMessages.email}}
         <p style="color: red;">{{validationMessages.email}}</p>
       {{/if}}
   </div>
 
-  <div class="mb-5 mx-5">
+  <div class="mb-3 mx-5">
     <label for="pwd" class="form-label">Password:</label>
     <input type="password" class="form-control" id="pwd" placeholder="Enter Password" name="pswd" value = {{values.pswd}}>
       {{#if validationMessages.pswd}}
@@ -42,7 +42,26 @@
 
 
 
+  {{!-- radio buttons --}}
+  <div class="mb-3 mx-5"> Select which role you want to sign up:
+    <div class="form-check">
+      <label class="form-check-label" for="clerk_id">Data Entry Clerk</label>
+      <input class="form-check-input" type="radio" name="role" id="clerk_id" value = "clerk_id">
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="customer">Customer</label>
+      <input class="form-check-input" type="radio" name="role" id="customer_id" value = "customer">
+    </div>
+    {{#if validationMessages.role}}
+    <p style="color: red;">{{validationMessages.role}}</p>
+    {{/if}}
+  </div>
 
+  {{#if validationMessages.unexpectedError}}
+  <div class="mb-3 mx-5">
+        <p style="color: red;">Unexpected Error: we encountered some unexpected error from the server side. Contact us and we will fix the issue...</p>
+  </div>
+  {{/if}}
   <div class="d-grid">
   <button type="submit" class="btn btn-warning mb-5 mx-5">Sign Up</button>
   </div>
