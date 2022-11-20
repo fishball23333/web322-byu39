@@ -48,11 +48,6 @@ function SignUpValidation (firstName, lastName,email,  pswd, role){
         validationMessages.pswd = "your password should have at least 1 symbol"
     }
 
-    //role validation
-    if (!role){
-        passedValidation = false
-        validationMessages.role = "you must specify a role"
-    }
     return {passedValidation, validationMessages}
 }
 module.exports = SignUpValidation

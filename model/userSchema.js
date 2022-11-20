@@ -6,7 +6,6 @@ const userSchema = new Mongoose.Schema({
     last_name:{type:String, required:true},
     user_email: {type:String, required:true, unique:true},
     password:{type:String, required:true},
-    user_role:{type:String, required:true},
 })
 userSchema.pre("save", function(next){
     let user = this

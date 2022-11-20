@@ -15,14 +15,14 @@ router.post("/login", (req, res)=>{
     const {email, pswd, role} = req.body
     let {passedValidation, validationMessages}  = SignInValidation (email, pswd, role)
     if (passedValidation){
-        userModel.findOne({user_email:req.body.email, user_role:req.body.role}).then(user => {
+        userModel.findOne({user_email:req.body.email}).then(user => {
             if (user){
                 bcrypt.compare(pswd, user.password).then(isMatched => {
                     if (isMatched){
                         req.session.user = user;
-                        if (user.user_role === "clerk_id"){
+                        if (role === "clerk_id"){
                             res.redirect("/clerk/list-mealkits")
-                        } else if (user.user_role === 'customer'){
+                        } else if (role === 'customer'){
                             res.redirect('/customer/cart')
                         }
                     } else {

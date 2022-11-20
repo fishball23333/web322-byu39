@@ -42,20 +42,6 @@
 
 
 
-  {{!-- radio buttons --}}
-  <div class="mb-3 mx-5"> Select which role you want to sign up:
-    <div class="form-check">
-      <label class="form-check-label" for="clerk_id">Data Entry Clerk</label>
-      <input class="form-check-input" type="radio" name="role" id="clerk_id" value = "clerk_id">
-    </div>
-    <div class="form-check">
-      <label class="form-check-label" for="customer">Customer</label>
-      <input class="form-check-input" type="radio" name="role" id="customer_id" value = "customer">
-    </div>
-    {{#if validationMessages.role}}
-    <p style="color: red;">{{validationMessages.role}}</p>
-    {{/if}}
-  </div>
 
   {{#if validationMessages.unexpectedError}}
   <div class="mb-3 mx-5">
