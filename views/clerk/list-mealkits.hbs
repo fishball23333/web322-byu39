@@ -2,13 +2,36 @@
     {{#if user}}
     <h1 class="text-center fw-bolder text-white">Welcome, {{user.first_name}}</h1>
     {{/if}}
-    <p class="h3 text-white mx-5">this is a clerk page, it will be implemented with a clerk dashboard page in the future</p>
+    <p class="h3 text-white text-center mx-5">This is the meal-kit list dashboard</p>
     <br>
+
 
 
     <div class="d-grid gap-2">
         <a class="btn btn-warning" href="/" role="button">Go back to home page</a>
-        <a class="btn btn-warning" href="/user/login" role="button">Go to sign in page</a>
+        <a class="btn btn-warning" href="/clerk/add-mealkit" role="button">Add a new meal kit</a>
+
+
+    <!--category level-->
+    {{#each myMenu}}
+    <div class="row mb-5">
+        <h1 class="text-center text-white">{{this.categoryName}}</h1>
+        <!--object level-->
+        {{#each this.mealKit}}
+
+        {{>mealkit card = this menuCard = true clerk = true}}
+
+        {{/each}}
+
+    </div>
+    {{/each}}
     </div>
     <br>
+
+  
+
+
+
 </div>
+
+

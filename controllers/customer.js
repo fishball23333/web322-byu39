@@ -5,10 +5,18 @@ const router = express.Router();
 
 
 router.get('/cart', (req, res) =>{
+    if (req.session.customer){
     res.render('customer/cart', {
         title:"customer cart",
-        // first_name: req.session.user.first_name
     })
+    } else{
+        res.render('general/notification',{
+            title:"unauthorized",
+            message:"user is not authorized to this page",
+            messageTitle: "Authorization Error:"
+        })
+    }
 })
+
 module.exports = router
 

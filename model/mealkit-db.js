@@ -1,13 +1,6 @@
-// • title (String) – Sautéed Ground Pork over Jasmine Rice
-// • includes (String) – Toasted Peanuts & Quick-Pickled Cucumber Salad
-// • description (String) – Gingery pork, crunchy cucumbers, and toasty peanuts.
-// • category (String) – Classic Meals
-// • price (Number) – $19.99
-// • cookingTime (Number, in minutes) – 25
-// • servings (Number) – 2
-// • imageUrl (String) – For now, point to an image placed in your static files folder.
-// • topMeal (Boolean) – true
-
+const { response } = require('express')
+const Mongoose = require('mongoose')
+const meal_kit_model = require("./mealkitSchema")
 
 let mealkitsDataBase = [
     {
@@ -19,7 +12,7 @@ let mealkitsDataBase = [
         cookingTime: 30, 
         servings: 4,
         imageUrl: "/image/food/topmeal1.jpg", 
-        customerRating: "😼😼😼😼😼",
+        customerRating: 5,
         topMeal: true
     }, 
     {
@@ -31,7 +24,7 @@ let mealkitsDataBase = [
         cookingTime: 10, 
         servings: 3,
         imageUrl: "/image/food/topmeal2.jpg", 
-        customerRating: "😼😼😼😼",
+        customerRating: 4,
         topMeal: true
     },
     {
@@ -43,7 +36,7 @@ let mealkitsDataBase = [
         cookingTime: 20, 
         servings: 4,
         imageUrl: "/image/food/topmeal3.jpg", 
-        customerRating: "😼😼😼😼😼",
+        customerRating: 5,
         topMeal: true
     },{
         title:"Hainanese Chicken Rice", 
@@ -54,7 +47,7 @@ let mealkitsDataBase = [
         cookingTime: 30, 
         servings: 1,
         imageUrl: "/image/food/HainaneseChickenRice.jpg", 
-        customerRating: "😼😼😼😼",
+        customerRating: 4,
         topMeal: false
     }, {
         title:"Crab With Rice Cake", 
@@ -65,7 +58,7 @@ let mealkitsDataBase = [
         cookingTime: 25, 
         servings: 3,
         imageUrl: "/image/food/CrabWithRiceCake.jpg", 
-        customerRating: "😼😼😼😼😼",
+        customerRating:5,
         topMeal: false
     }, {
         title:"Taiwanese Fried Chicken", 
@@ -76,32 +69,63 @@ let mealkitsDataBase = [
         cookingTime: 20, 
         servings: 2,
         imageUrl: "/image/food/TaiwaneseFriedChicken.jpg", 
-        customerRating: "😼😼😼😼😼",
+        customerRating: 5,
         topMeal: false
     }
 ]
 
 
 
+
 //will check if "filter" is ok in this case
-module.exports.getTopMealkits = () =>{
-    let topMealkits = mealkitsDataBase.filter((element)=>{return element.topMeal===true})
-    return topMealkits
-}
-module.exports.getMealsByCategory = () => {
-    let categories = {} 
-    mealkitsDataBase.forEach((element)=>{
-        if (categories[element.category]){
-            categories[element.category].push(element)
-        } else {
-            categories[element.category] = [element]
-        }
+// module.exports.getTopMealkits = () =>{
+//     let topMealkits = mealkitsDataBase.filter((element)=>{return element.topMeal===true})
+//     return topMealkits
+// }
+
+
+module.exports.getTopMealkits = function(){
+    return new Promise((resolve, reject) =>{
+        meal_kit_model.find().then(
+            (meal_kits)=>{
+            let objects = meal_kits.map(value => value.toObject())
+            let topMealkits = objects.filter((element)=>{return element.topMeal==true})
+            resolve(topMealkits)
+        }).catch(
+            (err)=>{console.log(err)
+            reject (err)
+        })
     })
-    let outputList = []
-    for (let key in categories){
-        outputList.push({categoryName:key, mealKit: categories[key]})
-    }
-    return outputList
 }
 
+module.exports.getMealsByCategory = function(){
+    return new Promise((resolve, reject) =>{
+        meal_kit_model.find().then(
+            (meal_kits)=>{
+            let objects = meal_kits.map(value => value.toObject())
+            let categories = {}
+            objects.forEach((element)=>{
+                // console.log(element._id.valueOf())
+                if (categories[element.category]){
+                    categories[element.category].push(element)
+                } else {
+                    categories[element.category] = [element]
+                }
+            })
+            let outputList = []
+            for (let key in categories){
+                outputList.push({categoryName:key, mealKit: categories[key]})
+            }
+            console.log(outputList)
+            resolve(outputList)
+        }).catch(
+            (err)=>{console.log(err)
+            reject (err)
+        })
+    })
+}
+
+module.exports.getAllMealKits = () =>{
+    return mealkitsDataBase
+}
 

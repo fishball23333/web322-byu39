@@ -7,7 +7,7 @@
 * Student Name  : Binwei Yu
 * Student ID    : 013154158
 * Course/Section: WEB322/NEE
-* Assignment 4
+* Assignment 5
 **************************************************************************************/
 
 const path = require("path");
@@ -22,32 +22,37 @@ const session = require("express-session");
 //setting env variable
 dotenv.config({ path: "./config/keys.env" });
 
+//setting fileupload
+const fileUpload = require("express-fileupload");
+
 //setting handlebar engine
 app.engine(".hbs", exphbs.engine({
     extname:".hbs",
-    defaultLayout:"main"
+    defaultLayout:"main",
 }))
 app.set("view engine", ".hbs")
 
 //Set up body-parser
 app.use(express.urlencoded({extended:true}))
 
+// Set up express-upload
+app.use(fileUpload());
 // Set up express-session
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }));
+
+
 app.use((req, res, next) => {
     // res.locals.user is a global handlebarsuser_role variable.
     // This means that every single handlebars file can access this variable.
     res.locals.user = req.session.user;
-    if (req.session.user){
-        if (req.session.user.user_role === 'customer'){
-            res.locals.customer = true
-        } else if (req.session.user.user_role === 'clerk_id'){
-            res.locals.clerk_id = true
-        }
+    if (req.session.customer){
+        res.locals.customer = true
+    } else if (req.session.clerk){
+        res.locals.clerk_id = true
     }
     next();
 });
@@ -68,11 +73,14 @@ Mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING,{
 
 
 //setting controllers
+    const Customer = require("./controllers/customer")
+    const Clerk = require("./controllers/clerk")
 const generalController = require("./controllers/general")
+const loadDataController = require("./controllers/load_data")
 const User = require("./controllers/user")
-const Customer = require("./controllers/customer")
-const Clerk = require("./controllers/clerk")
+
 app.use("/", generalController)
+app.use("/", loadDataController)
 app.use("/user", User)
 app.use("/customer", Customer)
 app.use("/clerk", Clerk)

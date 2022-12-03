@@ -1,0 +1,14 @@
+<div class="col-md-8 container-md signIn my-5">
+    <h1 class="text-center fw-bolder text-white">{{messageTitle}}</h1>
+    <p class="h3 text-white mx-5">{{message}}</p>
+    <br>
+
+
+    <div class="d-grid gap-2">
+        <a class="btn btn-warning" href="/" role="button">Go back to home page</a>
+    {{#if clerk_id}}
+        <a class="btn btn-warning" href="/clerk/list-mealkits" role="button">Go back to the clerk dashboard page</a>
+    {{/if}}
+    <br>
+    </div>
+</div>

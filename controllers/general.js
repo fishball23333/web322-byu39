@@ -1,15 +1,19 @@
 const express = require("express");
-const { getMealsByCategory, getTopMealkits } = require("../model/mealkit-db");
+const { getMealsByCategory, getTopMealkits} = require("../model/mealkit-db");
 const router = express.Router();
+
 
 //render will be based on layouts/main.hbs first, then put specific hbs file into the "body" of main.hbs
 router.get("/", (req, res) => {
-    res.render("general/home",
-    {title:"home",
-     topMeal: getTopMealkits()
-    })
+    getTopMealkits().then(
+        data=>{
+            res.render("general/home",
+            {title:"home",
+             topMeal: data
+            })
+        }
+    )
 });
-
 
 
 
@@ -20,8 +24,17 @@ router.get("/welcome", (req, res)=>{
 
 
 router.get("/menu", (req, res)=>{
-    res.render("general/menu", 
-    {title:"Menu", myMenu:getMealsByCategory()}
-    
-)})
+    getMealsByCategory().then(
+        data=>{
+            res.render("general/menu", 
+            {title:"Menu", myMenu:data})
+        })
+    }
+)
+
+
+
+
+
+
 module.exports = router;

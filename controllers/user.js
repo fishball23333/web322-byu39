@@ -21,8 +21,10 @@ router.post("/login", (req, res)=>{
                     if (isMatched){
                         req.session.user = user;
                         if (role === "clerk_id"){
+                            req.session.clerk = true
                             res.redirect("/clerk/list-mealkits")
                         } else if (role === 'customer'){
+                            req.session.customer = true
                             res.redirect('/customer/cart')
                         }
                     } else {
@@ -87,7 +89,6 @@ router.post("/signUp", (req, res)=>{
             last_name:lastName,
             user_email: email,
             password:pswd,
-            user_role:role
         })
 
         user.save()

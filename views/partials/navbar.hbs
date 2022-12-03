@@ -32,6 +32,7 @@
                 <li class="nav-item"><a href="/" class="nav-link mx-3">Home</a></li>
                 <li class="nav-item"><a href="./menu" class="nav-link mx-3">Menu</a></li>
                 {{#if user}}
+                    <li class="nav-item"><a class="nav-link mx-3" href="/load-data/meal-kits">Load Data</a></li>
                     <li class="nav-item d-md-none"><a class = "nav-link mx-3" href="/user/logout">Log Out</a></li>
                 {{else}}
                 <li class="nav-item d-md-none"><a class = "nav-link mx-3" href="/user/login">Sign In</a></li>
@@ -51,6 +52,7 @@
                     {{/if}}
                 </li>
                 <li class="d-none d-md-block mx-1"><a href="/user/logout"><button class="btn btn-dark">Log Out</button></a></li>
+
                 {{else}}
                 <li class="d-none d-md-block mx-1"><a href="/user/login"><button class="btn btn-dark">Sign In</button></a></li>
                 <li class="d-none d-md-block mx-1"><a href="/user/signUp"><button class="btn btn-dark ">Sign Up</button></a></li>
