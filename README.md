@@ -2,7 +2,7 @@
 Student Name: Binwei Yu  \
 Student Email: byu39@myseneca.ca  
 -------------------   
-This is the assignment 4 for my web322 project.  
+This is the assignment 6 for my web322 project.  
 Project github URL: https://github.com/fishball23333/web322-byu39.git  
 My link of hosted web on cyclic: https://pink-bored-nightingale.cyclic.app/  
 

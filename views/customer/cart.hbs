@@ -1,14 +1,47 @@
-<div class="col-md-8 container-md signIn my-5">
+<div class="col-md-8 container-md signIn my-5 text-white">
     {{#if user}}
-    <h1 class="text-center fw-bolder text-white">Welcome, {{user.first_name}}</h1>
+    <h1 class="text-center fw-bolder">Welcome, {{user.first_name}}</h1>
     {{/if}}
-    <p class="h3 text-white mx-5">this is a customer cart page, it will be implemented with a customer dashboard page in the future</p>
+    {{#unless mealkits}}
+    <h3 class="text-center fw-bolder my-5">Shopping cart is currently empty, check out the menu and add some meal kits</h3>
+    {{/unless}}
+    {{#if mealkits}}
     <br>
+        <h5>Here is the shopping cart checklist: </h5>
+        <table class="table text-white">
+            <thead>
+                <tr>
+                    <th scope="col">Meal Kit</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Add One</th>
+                    <th scope="col">Reduce One</th>
+                    <th scope="col">Extended Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {{#each mealkits}}
+                <tr>
+                    <td>{{mealkit.title}}</td>
+                    <td>{{qty}}</td>
+                    <td>{{mealkit.price}}</td>
+                    <td><a class="btn btn-warning" href="/customer/add_order?id={{id}}" role="button">+</a></td>
+                    <td><a class="btn btn-warning" href="/customer/reduce_order?id={{id}}" role="button">-</a></td>
+                    <td>{{extendedPrice}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
 
 
+    <p>cart total is {{cartTotal}}</p>
+    {{/if}}
     <div class="d-grid gap-2">
+        {{#if mealkits}}
+        <a class="btn btn-warning" href="/customer/checkout" role="button">Checkout</a>
+        {{/if}}
         <a class="btn btn-warning" href="/" role="button">Go back to home page</a>
-        <a class="btn btn-warning" href="/user/login" role="button">Go to sign in page</a>
     </div>
     <br>
 </div>

@@ -24,7 +24,7 @@ router.post("/login", (req, res)=>{
                             req.session.clerk = true
                             res.redirect("/clerk/list-mealkits")
                         } else if (role === 'customer'){
-                            req.session.customer = true
+                            req.session.customer = email
                             res.redirect('/customer/cart')
                         }
                     } else {

@@ -7,7 +7,7 @@
 * Student Name  : Binwei Yu
 * Student ID    : 013154158
 * Course/Section: WEB322/NEE
-* Assignment 5
+* Assignment 6
 **************************************************************************************/
 
 const path = require("path");
