@@ -1,7 +1,7 @@
 # This is my .gitignore file which is based on ".gitignore" template file for "node" from "github"
 
 # dotenv environment variables file which includes an env file that contains sendGrid API
-# *.env
+*.env
 
 
 # Logs
